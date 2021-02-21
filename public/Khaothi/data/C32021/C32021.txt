@@ -1,0 +1,234 @@
+-- MySQL dump 10.18  Distrib 10.3.27-MariaDB, for Linux (x86_64)
+--
+-- Host: localhost    Database: exp
+-- ------------------------------------------------------
+-- Server version	10.3.27-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `exp`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `exp` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+
+USE `exp`;
+
+--
+-- Table structure for table `cathi`
+--
+
+DROP TABLE IF EXISTS `cathi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cathi` (
+  `id` int(2) NOT NULL,
+  `ngay` date NOT NULL,
+  `gio` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cathi`
+--
+
+LOCK TABLES `cathi` WRITE;
+/*!40000 ALTER TABLE `cathi` DISABLE KEYS */;
+INSERT INTO `cathi` VALUES (1,'2021-01-23','7h30'),(2,'2021-01-23','10h00'),(3,'2021-01-23','13h00');
+/*!40000 ALTER TABLE `cathi` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cumthi`
+--
+
+DROP TABLE IF EXISTS `cumthi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cumthi` (
+  `id` int(2) NOT NULL DEFAULT 0,
+  `name` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cumthi`
+--
+
+LOCK TABLES `cumthi` WRITE;
+/*!40000 ALTER TABLE `cumthi` DISABLE KEYS */;
+INSERT INTO `cumthi` VALUES (1,'Hà Nội');
+/*!40000 ALTER TABLE `cumthi` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `diadiemthi`
+--
+
+DROP TABLE IF EXISTS `diadiemthi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `diadiemthi` (
+  `id` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `idcumthi` int(3) NOT NULL,
+  `name` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `diachi` varchar(150) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `maxsoluongts` int(4) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `diadiemthi`
+--
+
+LOCK TABLES `diadiemthi` WRITE;
+/*!40000 ALTER TABLE `diadiemthi` DISABLE KEYS */;
+INSERT INTO `diadiemthi` VALUES ('G2',1,'Giảng đường G2','Giảng đường G2 -  ĐHCN',30),('G9',1,'Giảng đường G9','Giảng đường G2 dhcn',30);
+/*!40000 ALTER TABLE `diadiemthi` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dshuyen`
+--
+
+DROP TABLE IF EXISTS `dshuyen`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dshuyen` (
+  `id` int(2) NOT NULL,
+  `idtinh` int(2) NOT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dshuyen`
+--
+
+LOCK TABLES `dshuyen` WRITE;
+/*!40000 ALTER TABLE `dshuyen` DISABLE KEYS */;
+INSERT INTO `dshuyen` VALUES (1,1,'Ba Đình	'),(2,1,'Bắc Từ Liêm	'),(3,1,'Cầu Giấy	'),(4,1,'Đống Đa	'),(5,1,'Hà Đông	'),(6,1,'Hai Bà Trưng'),(7,1,'Hoàn Kiếm	'),(8,1,'Hoàng Mai	'),(9,1,'Long Biên	'),(10,1,'Nam Từ Liêm	'),(11,1,'Tây Hồ	'),(12,1,'Thanh Xuân'),(13,1,'Sơn Tây	'),(14,1,'Ba Vì	'),(15,1,'Chương Mỹ	'),(16,1,'Đan Phượng	'),(17,1,'Đông Anh	'),(18,1,'Gia Lâm	'),(19,1,'Hoài Đức'),(20,1,'Mê Linh'),(21,1,'Mỹ Đức	'),(22,1,'Phú Xuyên	'),(23,1,'Phúc Thọ	'),(24,1,'Quốc Oai	'),(25,1,'Sóc Sơn	'),(26,1,'Thạch Thất	'),(27,1,'Thanh Oai	'),(28,1,'Thanh Trì	'),(29,1,'Thường Tín	'),(30,1,'Ứng Hòa'),(31,2,'An Hải'),(32,39,'Ý Yên');
+/*!40000 ALTER TABLE `dshuyen` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dstinh`
+--
+
+DROP TABLE IF EXISTS `dstinh`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dstinh` (
+  `id` int(2) NOT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dstinh`
+--
+
+LOCK TABLES `dstinh` WRITE;
+/*!40000 ALTER TABLE `dstinh` DISABLE KEYS */;
+INSERT INTO `dstinh` VALUES (1,'Hà Nội'),(2,'Hải Phòng'),(3,'Đà Nẵng'),(4,'TP HCM'),(5,'An Giang'),(6,'Bà Rịa - Vũng Tàu'),(7,'Bắc Giang'),(8,'Bắc Kạn'),(9,'Bạc Liêu'),(10,'Bắc Ninh'),(11,'Bến Tre'),(12,'Bình Định'),(13,'Bình Dương'),(14,'Bình Phước'),(15,'Bình Thuận'),(16,'Cà Mau'),(17,'Cao Bằng'),(18,'Đắk Lắk'),(19,'Đắk Nông'),(20,'Điện Biên'),(21,'Đồng Nai'),(22,'Đồng Tháp'),(23,'Gia Lai'),(24,'Hà Giang	'),(25,'Hà Nam'),(26,'Hà Tĩnh'),(27,'Hải Dương'),(28,'Hậu Giang'),(29,'Hòa Bình'),(30,'Hưng Yên'),(31,'Khánh Hòa'),(32,'Kiên Giang'),(33,'Kon Tum'),(34,'Lai Châu'),(35,'Lâm Đồng'),(36,'Lạng Sơn'),(37,'Lào Cai'),(38,'Long An'),(39,'Nam Định'),(40,'Nghệ An'),(41,'Ninh Bình'),(42,'Ninh Thuận'),(43,'Phú Thọ'),(44,'Quảng Bình	'),(45,'Quảng Nam'),(46,'Quảng Ngãi'),(47,'Quảng Ninh'),(48,'Quảng Trị'),(49,'Sóc Trăng'),(50,'Sơn La'),(51,'Tây Ninh'),(52,'Thái Bình'),(53,'Thái Nguyên'),(54,'Thanh Hóa'),(55,'Thừa Thiên Huế'),(56,'Tiền Giang'),(57,'Trà Vinh'),(58,'Tuyên Quang'),(59,'Vĩnh Long'),(60,'Vĩnh Phúc'),(61,'Yên Bái'),(62,'Phú Yên	'),(63,'Cần Thơ');
+/*!40000 ALTER TABLE `dstinh` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `dsts`
+--
+
+DROP TABLE IF EXISTS `dsts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dsts` (
+  `SOCMND` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `hovaten` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `ngaysinh` date NOT NULL,
+  `gioitinh` int(1) NOT NULL,
+  `matinh` int(2) NOT NULL,
+  `mahuyen` int(2) NOT NULL,
+  `cathi` int(2) NOT NULL,
+  `monthi` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `cumthi` int(2) NOT NULL,
+  `diadiemthi` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `Anhhoso` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dsts`
+--
+
+LOCK TABLES `dsts` WRITE;
+/*!40000 ALTER TABLE `dsts` DISABLE KEYS */;
+INSERT INTO `dsts` VALUES ('010123456789','Vũ Bá Duy 321','2021-01-15',0,1,1,3,'A1',1,'G2','010123456789.JPG'),('010123456789','Vũ Bá Duy 321','2021-01-15',0,1,1,2,'A2',1,'G2','010123456789.JPG'),('010123456782','Vũ Vân Long','2004-09-19',0,1,1,1,'A1',1,'G2','010123456782.JPG'),('010123456782','Vũ Vân Long','2004-09-19',0,1,1,2,'A2',1,'G2','010123456782.JPG'),('010123456783','Vũ Vân Long','2021-01-15',0,1,1,3,'A1',1,'G9','010123456783.JPG'),('010123456783','Vũ Vân Long','2021-01-15',0,1,1,2,'A2',1,'G9','010123456783.JPG'),('010123456784','Nguyễn Thị Nhàn','1979-01-15',1,1,19,2,'A2',1,'G9','010123456784.jpg'),('010123456784','Nguyễn Thị Nhàn','1979-01-15',1,1,19,1,'A4',1,'G9','010123456784.jpg');
+/*!40000 ALTER TABLE `dsts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `monthi`
+--
+
+DROP TABLE IF EXISTS `monthi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `monthi` (
+  `id` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `monthi`
+--
+
+LOCK TABLES `monthi` WRITE;
+/*!40000 ALTER TABLE `monthi` DISABLE KEYS */;
+INSERT INTO `monthi` VALUES ('A1','Đánh giá năng lực '),('A2','Tên môn A2 sửa'),('A4','Tên môn m 4');
+/*!40000 ALTER TABLE `monthi` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `monthi_cathi`
+--
+
+DROP TABLE IF EXISTS `monthi_cathi`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `monthi_cathi` (
+  `iddiadiemthi` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `idmonthi` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `idcathi` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `monthi_cathi`
+--
+
+LOCK TABLES `monthi_cathi` WRITE;
+/*!40000 ALTER TABLE `monthi_cathi` DISABLE KEYS */;
+INSERT INTO `monthi_cathi` VALUES ('G2','A1',1),('G2','A1',3),('G2','A2',2),('G9','A1',3),('G9','A2',1),('G9','A2',2),('G9','A4',1);
+/*!40000 ALTER TABLE `monthi_cathi` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2021-02-16 22:23:11
